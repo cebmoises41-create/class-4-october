@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
+<title>Sesión 4 — Present Perfect (3er Semestre)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    padding: 30px 40px;
+  }
+  h1 { text-align: center; color: #2b6cb0; font-size: 1.8rem; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #718096; font-size: 1rem; margin-bottom: 25px; }
+
+  /* LOGIN */
+  #loginScreen { text-align: center; padding: 40px 20px; }
+  #loginScreen h2 { color: #2b6cb0; margin-bottom: 15px; }
+  #loginScreen p { color: #4a5568; margin-bottom: 20px; }
+  #accessInput {
+    font-size: 2rem; text-align: center; letter-spacing: 12px;
+    width: 220px; padding: 12px; border: 3px solid #cbd5e0;
+    border-radius: 12px; outline: none; transition: border 0.3s;
+  }
+  #accessInput:focus { border-color: #2b6cb0; }
+  #loginBtn {
+    display: block; margin: 20px auto 0; padding: 14px 50px;
+    font-size: 1.1rem; background: #2b6cb0; color: white;
+    border: none; border-radius: 12px; cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+  }
+  #loginBtn:hover { background: #2c5282; transform: scale(1.02); }
+  #loginError { color: #e53e3e; margin-top: 15px; font-weight: 600; display: none; }
+
+  /* BLOGGER NOTICE */
+  .blogger-notice {
+    background: #fefcbf; border-left: 6px solid #d69e2e;
+    padding: 16px 20px; border-radius: 10px; margin-bottom: 25px;
+    color: #744210; font-size: 0.98rem;
+  }
+  .blogger-notice strong { color: #975a16; }
+  .blogger-notice ul { margin: 8px 0 0 20px; }
+  .blogger-notice li { margin-bottom: 4px; }
+
+  #mainContent { display: none; }
+
+  /* TABS */
+  .tabs {
+    display: flex; gap: 8px; margin-bottom: 25px; flex-wrap: wrap;
+    border-bottom: 3px solid #e2e8f0; padding-bottom: 10px;
+  }
+  .tab-btn {
+    padding: 10px 14px; font-size: 0.9rem; font-weight: 600;
+    background: #edf2f7; color: #4a5568; border: none;
+    border-radius: 10px; cursor: pointer; transition: all 0.3s;
+  }
+  .tab-btn:hover { background: #bee3f8; color: #2c5282; }
+  .tab-btn.active { background: #2b6cb0; color: white; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* SECTION */
+  .section-box {
+    background: #f7fafc; border: 2px solid #e2e8f0;
+    border-radius: 14px; padding: 22px 26px; margin-bottom: 25px;
+  }
+  .section-box h2 {
+    color: #2b6cb0; font-size: 1.2rem; margin-bottom: 12px;
+    border-bottom: 2px dashed #bee3f8; padding-bottom: 8px;
+  }
+  .instruction { color: #4a5568; margin-bottom: 12px; font-size: 0.98rem; }
+
+  .grammar-tip {
+    background: #ebf8ff; border-left: 5px solid #4299e1;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 15px;
+    color: #2c5282; font-size: 0.95rem;
+  }
+  .grammar-tip strong { color: #2b6cb0; }
+
+  .note-box {
+    background: #fffaf0; border-left: 5px solid #ed8936;
+    padding: 12px 16px; border-radius: 8px; margin-bottom: 15px;
+    color: #7b341e; font-size: 0.95rem;
+  }
+
+  /* QUESTION */
+  .question {
+    background: #ffffff; border-radius: 10px; padding: 16px 18px;
+    margin-bottom: 14px; border: 1px solid #e2e8f0;
+  }
+  .question .q-num {
+    font-weight: 700; color: #2b6cb0; margin-right: 6px;
+  }
+  .question .q-prompt {
+    font-size: 1.02rem; color: #2d3748; margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .audio-btn {
+    background: #4299e1; color: white; border: none;
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
+    font-size: 0.88rem; font-weight: 600; margin: 4px 4px 8px 0;
+    transition: background 0.3s;
+  }
+  .audio-btn:hover { background: #3182ce; }
+  .audio-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .options label {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    background: #f7fafc; border: 1px solid #e2e8f0;
+    transition: background 0.2s, border 0.2s;
+    font-size: 0.98rem;
+  }
+  .options label:hover { background: #ebf8ff; border-color: #bee3f8; }
+  .options input[type="radio"] { accent-color: #2b6cb0; width: 18px; height: 18px; cursor: pointer; }
+
+  /* INPUT (para escribir) */
+  .write-input {
+    width: 100%; padding: 12px 14px; border-radius: 10px;
+    border: 2px solid #cbd5e0; font-size: 1rem; outline: none;
+    font-family: inherit; background: #fff; color: #1a202c;
+    transition: border 0.2s;
+    margin-top: 6px;
+  }
+  .write-input:focus { border-color: #2b6cb0; }
+  .write-input.correct { border-color: #38a169; background: #f0fff4; }
+  .write-input.wrong { border-color: #e53e3e; background: #fff5f5; }
+
+  /* WORD BANK (ordenar) */
+  .word-bank {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 10px 0; padding: 10px;
+    background: #edf2f7; border-radius: 10px;
+    min-height: 50px; align-items: center;
+  }
+  .word-chip {
+    background: #2b6cb0; color: white; border: none;
+    padding: 8px 14px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .word-chip:hover:not(:disabled) { background: #2c5282; transform: translateY(-2px); }
+  .word-chip:disabled { opacity: 0.3; cursor: not-allowed; }
+  .answer-line {
+    min-height: 50px; padding: 10px 14px;
+    background: #fff; border: 2px dashed #4299e1;
+    border-radius: 10px; display: flex; flex-wrap: wrap; gap: 8px;
+    align-items: center; margin: 8px 0;
+  }
+  .answer-line .placed {
+    background: #38a169; color: white; border: none;
+    padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    font-size: 0.95rem; font-weight: 600;
+  }
+  .answer-line .placed:hover { background: #e53e3e; }
+  .answer-line .placeholder { color: #a0aec0; font-style: italic; font-size: 0.9rem; }
+
+  /* CHECK BUTTON */
+  .check-btn {
+    background: #ed8936; color: white; border: none;
+    padding: 8px 18px; border-radius: 8px; cursor: pointer;
+    font-weight: 600; font-size: 0.92rem; margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .check-btn:hover { background: #dd6b20; }
+  .check-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+
+  .feedback {
+    margin-top: 8px; font-weight: 600; font-size: 0.95rem;
+    min-height: 22px;
+  }
+  .feedback.ok { color: #2f855a; }
+  .feedback.bad { color: #c53030; }
+
+  /* BTN */
+  .btn {
+    display: inline-block; padding: 12px 35px; font-size: 1rem;
+    border: none; border-radius: 10px; cursor: pointer;
+    transition: background 0.3s, transform 0.1s; font-weight: 600;
+  }
+  .btn-primary { background: #2b6cb0; color: white; }
+  .btn-primary:hover { background: #2c5282; transform: scale(1.02); }
+  .btn-success { background: #38a169; color: white; }
+  .btn-success:hover { background: #2f855a; transform: scale(1.02); }
+  .btn-center { text-align: center; margin: 25px 0 10px; }
+
+  /* RESULTS */
+  #resultsScreen { display: none; text-align: center; padding: 30px 20px; }
+  #resultsScreen h2 { color: #2b6cb0; margin-bottom: 15px; }
+  .score-box {
+    background: #ebf8ff; border-radius: 14px; padding: 25px;
+    margin: 20px auto; max-width: 600px; text-align: left;
+  }
+  .score-item {
+    display: flex; justify-content: space-between; padding: 8px 0;
+    border-bottom: 1px solid #bee3f8; font-size: 1.02rem;
+  }
+  .score-item:last-child { border-bottom: none; font-weight: 700; color: #2b6cb0; font-size: 1.12rem; }
+  .feedback-final { margin-top: 15px; font-weight: 600; font-size: 1.1rem; text-align: center; }
+
+  @media (max-width: 600px) {
+    .container { padding: 20px 16px; }
+    h1 { font-size: 1.35rem; }
+    .tab-btn { font-size: 0.8rem; padding: 8px 10px; }
+    .section-box { padding: 16px; }
+  }
+</style>
+</head>
+<body translate="no" class="notranslate">
+
+<div class="container" translate="no">
+
+  <!-- ============ LOGIN ============ -->
+  <div id="loginScreen">
+    <h1>🔐 Sesión 4 — Present Perfect</h1>
+    <p class="subtitle">3er Semestre · 5 Activities · 75 Exercises</p>
+    <p>Ingresa el código de acceso de 4 dígitos:</p>
+    <input type="password" id="accessInput" maxlength="4" inputmode="numeric" placeholder="••••">
+    <button id="loginBtn" onclick="checkAccess()">ENTRAR</button>
+    <p id="loginError">❌ Código incorrecto. Intenta de nuevo.</p>
+  </div>
+
+  <!-- ============ MAIN ============ -->
+  <div id="mainContent">
+
+    <div class="blogger-notice">
+      📝 <strong>Instrucciones importantes:</strong>
+      <ul>
+        <li>Contesta este ejercicio en el <strong>blog de Blogger</strong>.</li>
+        <li><strong>Todas las actividades se realizan en tu cuaderno</strong> con <strong>tinta azul</strong>.</li>
+        <li>Anota la <strong>fecha</strong> y tu <strong>nombre</strong> antes de comenzar.</li>
+        <li><strong>Actividad 1:</strong> escribe la Yes/No question en present perfect y elige la opción correcta.</li>
+        <li><strong>Actividad 2:</strong> completa con la forma negativa o interrogativa y elige la opción correcta.</li>
+        <li><strong>Actividad 3:</strong> elige la opción correcta (ever / never / already / yet / just).</li>
+        <li><strong>Actividad 4:</strong> ordena las palabras y escribe la oración completa.</li>
+        <li><strong>Actividad 5:</strong> escucha el audio y elige la oración correcta.</li>
+        <li>Al terminar las actividades, presiona <strong>"VER RESULTADOS"</strong>.</li>
+      </ul>
+    </div>
+
+    <h1>📘 SESIÓN 4 — PRESENT PERFECT</h1>
+    <p class="subtitle">Yes/No Questions · Negative · Ever / Never · Order · Listening</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(1, this)">✍️ Act 1 — Yes/No Qs</button>
+      <button class="tab-btn" onclick="switchTab(2, this)">✍️ Act 2 — Negative/Interr.</button>
+      <button class="tab-btn" onclick="switchTab(3, this)">🔤 Act 3 — Ever/Never/Yet</button>
+      <button class="tab-btn" onclick="switchTab(4, this)">🧩 Act 4 — Order</button>
+      <button class="tab-btn" onclick="switchTab(5, this)">🎧 Act 5 — Listening</button>
+    </div>
+
+    <!-- ============ ACTIVIDAD 1 ============ -->
+    <div id="tab1" class="tab-content active">
+      <div class="section-box">
+        <h2>✍️ ACTIVIDAD 1 — Write Yes/No Questions in Present Perfect</h2>
+        <p class="instruction">Escribe la <strong>Yes/No question</strong> en present perfect usando el prompt. Después elige la opción correcta. (15 ejercicios)</p>
+        <div class="grammar-tip">
+          💡 <strong>Grammar Tip:</strong> Question: <em>Have/Has + Subject + past participle?</em>
+        </div>
+        <div class="note-box">
+          ✏️ <strong>En tu cuaderno:</strong> escribe la pregunta completa en inglés y luego marca tu respuesta.
+        </div>
+        <div id="actividad1"></div>
+      </div>
+    </div>
+
+    <!-- ============ ACTIVIDAD 2 ============ -->
+    <div id="tab2" class="tab-content">
+      <div class="section-box">
+        <h2>✍️ ACTIVIDAD 2 — Negative or Interrogative Form</h2>
+        <p class="instruction">Completa la oración con la forma negativa o interrogativa del present perfect. Usa contracciones cuando sea posible. (15 ejercicios)</p>
+        <div class="grammar-tip">
+          💡 <strong>Grammar Tip:</strong> Negative: <em>S + have/has + not + past participle</em> · Question: <em>Have/Has + S + past participle?</em>
+        </div>
+        <div class="note-box">
+          ✏️ <strong>En tu cuaderno:</strong> escribe la oración completa con tu respuesta.
+        </div>
+        <div id="actividad2"></div>
+      </div>
+    </div>
+
+    <!-- ============ ACTIVIDAD 3 ============ -->
+    <div id="tab3" class="tab-content">
+      <div class="section-box">
+        <h2>🔤 ACTIVIDAD 3 — Ever / Never / Already / Yet / Just</h2>
+        <p class="instruction">Elige la palabra correcta para completar la oración en present perfect. (15 ejercicios)</p>
+        <div class="grammar-tip">
+          💡 <strong>Grammar Tip:</strong> Use <em>ever</em> in questions · <em>never</em> in affirmative for experience · <em>already / just</em> in affirmative · <em>yet</em> in negative and questions.
+        </div>
+        <div class="note-box">
+          ✏️ <strong>En tu cuaderno:</strong> escribe la oración completa y marca tu respuesta.
+        </div>
+        <div id="actividad3"></div>
+      </div>
+    </div>
+
+    <!-- ============ ACTIVIDAD 4 ============ -->
+    <div id="tab4" class="tab-content">
+      <div class="section-box">
+        <h2>🧩 ACTIVIDAD 4 — Order the Words</h2>
+        <p class="instruction">Ordena las palabras y <strong>escribe</strong> la oración completa en present perfect. (15 ejercicios)</p>
+        <div class="note-box">
+          ✏️ <strong>En tu cuaderno:</strong> escribe la oración ordenada completa.
+        </div>
+        <div id="actividad4"></div>
+      </div>
+    </div>
+
+    <!-- ============ ACTIVIDAD 5 ============ -->
+    <div id="tab5" class="tab-content">
+      <div class="section-box">
+        <h2>🎧 ACTIVIDAD 5 — Listen & Choose</h2>
+        <p class="instruction">Escucha la oración en present perfect y elige la opción correcta. (15 ejercicios)</p>
+        <div class="note-box">
+          ✏️ <strong>En tu cuaderno:</strong> escribe lo que escuchas y luego la opción correcta.
+        </div>
+        <div id="actividad5"></div>
+      </div>
+    </div>
+
+    <div class="btn-center">
+      <button class="btn btn-success" onclick="showResults()">✅ VER RESULTADOS</button>
+    </div>
+
+  </div>
+
+  <!-- ============ RESULTADOS ============ -->
+  <div id="resultsScreen">
+    <h2>🏆 Resultados — Sesión 4</h2>
+    <div class="score-box" id="scoreBox"></div>
+    <div class="btn-center">
+      <button class="btn btn-primary" onclick="location.reload()">🔄 Volver al inicio</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============ ACCESO ============ */
+const ACCESS_CODE = "3223";
+let attempts = 0;
+
+function checkAccess() {
+  const input = document.getElementById('accessInput').value.trim();
+  const error = document.getElementById('loginError');
+  if (input === ACCESS_CODE) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+  } else {
+    attempts++;
+    error.style.display = 'block';
+    error.textContent = `❌ Código incorrecto. Intento ${attempts}. Intenta de nuevo.`;
+    document.getElementById('accessInput').value = '';
+    document.getElementById('accessInput').focus();
+  }
+}
+document.getElementById('accessInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkAccess();
+});
+
+/* ============ TABS ============ */
+function switchTab(num, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab' + num).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ============ SPEECH ============ */
+function speak(text, btnElement, lang = 'en-US') {
+  if (!('speechSynthesis' in window)) {
+    alert('Tu navegador no soporta síntesis de voz. Usa Chrome, Edge o Safari.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = lang;
+  utter.rate = 0.85;
+  const voices = window.speechSynthesis.getVoices();
+  const v = voices.find(x => x.lang && x.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase()));
+  if (v) utter.voice = v;
+  if (btnElement) {
+    btnElement.disabled = true;
+    const original = btnElement.textContent;
+    utter.onend = () => { btnElement.disabled = false; btnElement.textContent = original; };
+  }
+  window.speechSynthesis.speak(utter);
+}
+if ('speechSynthesis' in window) { window.speechSynthesis.getVoices(); }
+
+/* ============ UTIL ============ */
+function shuffleArr(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function normalize(str) {
+  return (str || '').toLowerCase().trim()
+    .replace(/[.,!?;:¿¡"']/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+/* =====================================================================
+   ACTIVIDAD 1 — 15 Yes/No Questions (escribir + elegir opción)
+   ===================================================================== */
+const ACTIVIDAD1 = [
+  { prompt: "you / visit / Mexico City",     correct: "Have you visited Mexico City?",
+    wrong: ["Have you visit Mexico City?", "Did you visited Mexico City?", "Has you visited Mexico City?"] },
+  { prompt: "she / eat / mole",              correct: "Has she eaten mole?",
+    wrong: ["Have she eaten mole?", "Has she ate mole?", "Did she eaten mole?"] },
+  { prompt: "they / travel / abroad",        correct: "Have they traveled abroad?",
+    wrong: ["Has they traveled abroad?", "Have they travel abroad?", "Did they traveled abroad?"] },
+  { prompt: "he / read / Don Quixote",       correct: "Has he read Don Quixote?",
+    wrong: ["Have he read Don Quixote?", "Has he readed Don Quixote?", "Did he readed Don Quixote?"] },
+  { prompt: "we / finish / the project",     correct: "Have we finished the project?",
+    wrong: ["Has we finished the project?", "Have we finish the project?", "Did we finished the project?"] },
+  { prompt: "Maria / write / a letter",      correct: "Has Maria written a letter?",
+    wrong: ["Have Maria written a letter?", "Has Maria wrote a letter?", "Did Maria written a letter?"] },
+  { prompt: "you / see / the new movie",     correct: "Have you seen the new movie?",
+    wrong: ["Has you seen the new movie?", "Have you saw the new movie?", "Did you seen the new movie?"] },
+  { prompt: "Carlos / buy / a car",          correct: "Has Carlos bought a car?",
+    wrong: ["Have Carlos bought a car?", "Has Carlos buyed a car?", "Did Carlos bought a car?"] },
+  { prompt: "your parents / go / to Cancun", correct: "Have your parents gone to Cancun?",
+    wrong: ["Has your parents gone to Cancun?", "Have your parents went to Cancun?", "Did your parents gone to Cancun?"] },
+  { prompt: "you / take / the English exam", correct: "Have you taken the English exam?",
+    wrong: ["Has you taken the English exam?", "Have you took the English exam?", "Did you taken the English exam?"] },
+  { prompt: "she / speak / to the teacher",  correct: "Has she spoken to the teacher?",
+    wrong: ["Have she spoken to the teacher?", "Has she spoke to the teacher?", "Did she spoken to the teacher?"] },
+  { prompt: "they / be / to Europe",         correct: "Have they been to Europe?",
+    wrong: ["Has they been to Europe?", "Have they be to Europe?", "Did they been to Europe?"] },
+  { prompt: "he / do / his homework",        correct: "Has he done his homework?",
+    wrong: ["Have he done his homework?", "Has he did his homework?", "Did he done his homework?"] },
+  { prompt: "we / meet / the new student",   correct: "Have we met the new student?",
+    wrong: ["Has we met the new student?", "Have we meet the new student?", "Did we met the new student?"] },
+  { prompt: "you / ever / try / sushi",      correct: "Have you ever tried sushi?",
+    wrong: ["Has you ever tried sushi?", "Have you ever try sushi?", "Did you ever tried sushi?"] }
+];
+
+/* =====================================================================
+   ACTIVIDAD 2 — 15 Negative/Interrogative (elegir opción)
+   ===================================================================== */
+const ACTIVIDAD2 = [
+  { sentence: "I ___ (not / finish) my homework yet.",            correct: "haven't finished",
+    options: ["haven't finished", "hasn't finished", "don't finish", "didn't finished"] },
+  { sentence: "___ you ___ (ever / be) to Guadalajara?",          correct: "Have / been",
+    options: ["Have / been", "Has / been", "Did / been", "Have / be"] },
+  { sentence: "She ___ (not / eat) sushi.",                       correct: "hasn't eaten",
+    options: ["hasn't eaten", "haven't eaten", "hasn't ate", "didn't eat"] },
+  { sentence: "___ they ___ (visit) the museum?",                 correct: "Have / visited",
+    options: ["Have / visited", "Has / visited", "Did / visited", "Have / visit"] },
+  { sentence: "We ___ (not / see) that movie.",                   correct: "haven't seen",
+    options: ["haven't seen", "hasn't seen", "haven't saw", "didn't saw"] },
+  { sentence: "___ he ___ (ever / travel) by plane?",             correct: "Has / traveled",
+    options: ["Has / traveled", "Have / traveled", "Has / travel", "Did / traveled"] },
+  { sentence: "Carlos ___ (not / write) the report.",             correct: "hasn't written",
+    options: ["hasn't written", "haven't written", "hasn't wrote", "didn't wrote"] },
+  { sentence: "___ you ___ (ever / read) a novel in English?",    correct: "Have / read",
+    options: ["Have / read", "Has / read", "Have / readed", "Did / read"] },
+  { sentence: "Maria ___ (not / take) the test yet.",             correct: "hasn't taken",
+    options: ["hasn't taken", "haven't taken", "hasn't took", "didn't took"] },
+  { sentence: "___ your sister ___ (ever / sing) in public?",     correct: "Has / sung",
+    options: ["Has / sung", "Have / sung", "Has / sang", "Did / sung"] },
+  { sentence: "They ___ (not / arrive) yet.",                     correct: "haven't arrived",
+    options: ["haven't arrived", "hasn't arrived", "haven't arrive", "didn't arrive"] },
+  { sentence: "___ you ___ (finish) your project?",               correct: "Have / finished",
+    options: ["Have / finished", "Has / finished", "Have / finish", "Did / finished"] },
+  { sentence: "He ___ (not / be) to London.",                     correct: "hasn't been",
+    options: ["hasn't been", "haven't been", "hasn't be", "didn't been"] },
+  { sentence: "___ we ___ (meet) before?",                        correct: "Have / met",
+    options: ["Have / met", "Has / met", "Have / meet", "Did / met"] },
+  { sentence: "My parents ___ (not / come) home yet.",            correct: "haven't come",
+    options: ["haven't come", "hasn't come", "haven't came", "didn't came"] }
+];
+
+/* =====================================================================
+   ACTIVIDAD 3 — 15 Ever / Never / Already / Yet / Just
+   ===================================================================== */
+const ACTIVIDAD3 = [
+  { sentence: "Have you ___ been to Canada?",         correct: "ever",
+    options: ["ever", "never", "yet", "already"] },
+  { sentence: "I have ___ eaten sushi. I don't like it.", correct: "never",
+    options: ["never", "ever", "yet", "already"] },
+  { sentence: "She has ___ finished her homework.",   correct: "already",
+    options: ["already", "yet", "ever", "never"] },
+  { sentence: "They haven't arrived ___.",            correct: "yet",
+    options: ["yet", "already", "ever", "never"] },
+  { sentence: "He has ___ left the office.",          correct: "just",
+    options: ["just", "yet", "ever", "never"] },
+  { sentence: "Have you ___ seen this movie?",        correct: "ever",
+    options: ["ever", "never", "already", "just"] },
+  { sentence: "We have ___ been to Paris.",           correct: "never",
+    options: ["never", "ever", "yet", "just"] },
+  { sentence: "I have ___ finished my dinner.",       correct: "just",
+    options: ["just", "yet", "ever", "never"] },
+  { sentence: "Has she ___ finished the report?",     correct: "already",
+    options: ["already", "yet", "ever", "never"] },
+  { sentence: "They haven't seen the movie ___.",     correct: "yet",
+    options: ["yet", "already", "just", "ever"] },
+  { sentence: "Have you ___ tried Mexican food?",     correct: "ever",
+    options: ["ever", "never", "yet", "already"] },
+  { sentence: "He has ___ come back from work.",      correct: "just",
+    options: ["just", "yet", "ever", "never"] },
+  { sentence: "I have ___ been to Japan.",            correct: "never",
+    options: ["never", "ever", "already", "yet"] },
+  { sentence: "She has ___ cleaned the kitchen.",     correct: "already",
+    options: ["already", "yet", "ever", "never"] },
+  { sentence: "Have they ___ eaten at that restaurant?", correct: "ever",
+    options: ["ever", "never", "just", "yet"] }
+];
+
+/* =====================================================================
+   ACTIVIDAD 4 — 15 Order the words (escribir oración completa)
+   ===================================================================== */
+const ACTIVIDAD4 = [
+  { words: ["Have", "you", "ever", "visited", "Mexico"],          correct: "Have you ever visited Mexico?" },
+  { words: ["She", "has", "not", "eaten", "sushi"],               correct: "She has not eaten sushi." },
+  { words: ["Has", "he", "finished", "his", "homework"],          correct: "Has he finished his homework?" },
+  { words: ["We", "have", "already", "seen", "the", "movie"],     correct: "We have already seen the movie." },
+  { words: ["They", "have", "not", "arrived", "yet"],             correct: "They have not arrived yet." },
+  { words: ["Have", "you", "ever", "been", "to", "Guadalajara"],  correct: "Have you ever been to Guadalajara?" },
+  { words: ["He", "has", "just", "written", "a", "letter"],       correct: "He has just written a letter." },
+  { words: ["Maria", "has", "not", "taken", "the", "test"],       correct: "Maria has not taken the test." },
+  { words: ["Have", "they", "ever", "traveled", "abroad"],        correct: "Have they ever traveled abroad?" },
+  { words: ["I", "have", "never", "seen", "this", "movie"],       correct: "I have never seen this movie." },
+  { words: ["Has", "she", "already", "read", "the", "book"],      correct: "Has she already read the book?" },
+  { words: ["We", "have", "not", "finished", "the", "project"],   correct: "We have not finished the project." },
+  { words: ["Have", "you", "ever", "eaten", "mole"],              correct: "Have you ever eaten mole?" },
+  { words: ["Carlos", "has", "just", "bought", "a", "car"],       correct: "Carlos has just bought a car." },
+  { words: ["They", "have", "not", "seen", "the", "new", "movie"],correct: "They have not seen the new movie." }
+];
+
+/* =====================================================================
+   ACTIVIDAD 5 — 15 Listen & Choose
+   ===================================================================== */
+const ACTIVIDAD5 = [
+  { audio: "Have you ever visited Mexico City?",   correct: "Have you ever visited Mexico City?",
+    options: ["Have you ever visited Mexico City?", "Have you ever visit Mexico City?", "Has you ever visited Mexico City?", "Did you ever visited Mexico City?"] },
+  { audio: "She has not eaten sushi.",             correct: "She has not eaten sushi.",
+    options: ["She has not eaten sushi.", "She has not ate sushi.", "She have not eaten sushi.", "She did not eaten sushi."] },
+  { audio: "Has he finished his homework?",        correct: "Has he finished his homework?",
+    options: ["Has he finished his homework?", "Have he finished his homework?", "Has he finish his homework?", "Did he finished his homework?"] },
+  { audio: "We have already seen the movie.",      correct: "We have already seen the movie.",
+    options: ["We have already seen the movie.", "We have already saw the movie.", "We has already seen the movie.", "We have already see the movie."] },
+  { audio: "They have not arrived yet.",           correct: "They have not arrived yet.",
+    options: ["They have not arrived yet.", "They has not arrived yet.", "They have not arrive yet.", "They did not arrived yet."] },
+  { audio: "Have you ever been to Guadalajara?",   correct: "Have you ever been to Guadalajara?",
+    options: ["Have you ever been to Guadalajara?", "Has you ever been to Guadalajara?", "Have you ever be to Guadalajara?", "Did you ever been to Guadalajara?"] },
+  { audio: "He has just written a letter.",        correct: "He has just written a letter.",
+    options: ["He has just written a letter.", "He has just wrote a letter.", "He have just written a letter.", "He has just write a letter."] },
+  { audio: "Maria has not taken the test.",        correct: "Maria has not taken the test.",
+    options: ["Maria has not taken the test.", "Maria has not took the test.", "Maria have not taken the test.", "Maria did not taken the test."] },
+  { audio: "Have they ever traveled abroad?",      correct: "Have they ever traveled abroad?",
+    options: ["Have they ever traveled abroad?", "Has they ever traveled abroad?", "Have they ever travel abroad?", "Did they ever traveled abroad?"] },
+  { audio: "I have never seen this movie.",        correct: "I have never seen this movie.",
+    options: ["I have never seen this movie.", "I have never saw this movie.", "I has never seen this movie.", "I have never see this movie."] },
+  { audio: "Has she already read the book?",       correct: "Has she already read the book?",
+    options: ["Has she already read the book?", "Have she already read the book?", "Has she already readed the book?", "Did she already read the book?"] },
+  { audio: "We have not finished the project.",    correct: "We have not finished the project.",
+    options: ["We have not finished the project.", "We has not finished the project.", "We have not finish the project.", "We did not finished the project."] },
+  { audio: "Have you ever eaten mole?",            correct: "Have you ever eaten mole?",
+    options: ["Have you ever eaten mole?", "Has you ever eaten mole?", "Have you ever ate mole?", "Did you ever eaten mole?"] },
+  { audio: "Carlos has just bought a car.",        correct: "Carlos has just bought a car.",
+    options: ["Carlos has just bought a car.", "Carlos has just buyed a car.", "Carlos have just bought a car.", "Carlos has just buy a car."] },
+  { audio: "They have not seen the new movie.",    correct: "They have not seen the new movie.",
+    options: ["They have not seen the new movie.", "They has not seen the new movie.", "They have not saw the new movie.", "They did not seen the new movie."] }
+];
+
+/* =====================================================================
+   RENDER ACTIVIDAD 1 — escribir + opciones
+   ===================================================================== */
+function renderActividad1() {
+  const c = document.getElementById('actividad1');
+  c.innerHTML = ACTIVIDAD1.map((q, i) => {
+    const options = shuffleArr([q.correct, ...q.wrong]);
+    return `
+      <div class="question">
+        <span class="q-num">${i + 1}.</span>
+        <div class="q-prompt">Prompt: <em>${q.prompt}</em></div>
+        <input type="text" class="write-input" id="a1_input_${i}"
+               placeholder="Escribe la Yes/No question aquí..." autocomplete="off"
+               autocorrect="off" autocapitalize="off" spellcheck="false" translate="no">
+        <button class="check-btn" onclick="checkWriteA1(${i})">✔ Verificar escritura</button>
+        <div class="feedback" id="a1_fb_${i}"></div>
+        <div class="options">
+          ${options.map(opt => `
+            <label>
+              <input type="radio" name="a1_${i}" value="${opt.replace(/"/g, '&quot;')}">
+              ${opt}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function checkWriteA1(i) {
+  const q = ACTIVIDAD1[i];
+  const input = document.getElementById(`a1_input_${i}`);
+  const fb = document.getElementById(`a1_fb_${i}`);
+  if (!input.value.trim()) { input.focus(); return; }
+  if (normalize(input.value) === normalize(q.correct)) {
+    input.classList.add('correct'); input.classList.remove('wrong');
+    fb.textContent = '✅ ¡Excelente! Escritura correcta.';
+    fb.className = 'feedback ok';
+  } else {
+    input.classList.add('wrong'); input.classList.remove('correct');
+    fb.innerHTML = `❌ Correcto: <strong>${q.correct}</strong>`;
+    fb.className = 'feedback bad';
+  }
+}
+
+/* =====================================================================
+   RENDER ACTIVIDAD 2 — opciones
+   ===================================================================== */
+function renderActividad2() {
+  const c = document.getElementById('actividad2');
+  c.innerHTML = ACTIVIDAD2.map((q, i) => {
+    const options = shuffleArr(q.options);
+    return `
+      <div class="question">
+        <span class="q-num">${i + 1}.</span>
+        <div class="q-prompt">${q.sentence}</div>
+        <div class="options">
+          ${options.map(opt => `
+            <label>
+              <input type="radio" name="a2_${i}" value="${opt.replace(/"/g, '&quot;')}">
+              ${opt}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* =====================================================================
+   RENDER ACTIVIDAD 3 — opciones
+   ===================================================================== */
+function renderActividad3() {
+  const c = document.getElementById('actividad3');
+  c.innerHTML = ACTIVIDAD3.map((q, i) => {
+    const options = shuffleArr(q.options);
+    return `
+      <div class="question">
+        <span class="q-num">${i + 1}.</span>
+        <div class="q-prompt">${q.sentence}</div>
+        <div class="options">
+          ${options.map(opt => `
+            <label>
+              <input type="radio" name="a3_${i}" value="${opt.replace(/"/g, '&quot;')}">
+              ${opt}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* =====================================================================
+   RENDER ACTIVIDAD 4 — ordenar y escribir
+   ===================================================================== */
+function renderActividad4() {
+  const c = document.getElementById('actividad4');
+  c.innerHTML = ACTIVIDAD4.map((q, i) => {
+    const words = shuffleArr(q.words);
+    return `
+      <div class="question">
+        <span class="q-num">${i + 1}.</span>
+        <div class="q-prompt">Palabras: <em>${words.join(' · ')}</em></div>
+        <input type="text" class="write-input" id="a4_input_${i}"
+               placeholder="Escribe la oración ordenada..." autocomplete="off"
+               autocorrect="off" autocapitalize="off" spellcheck="false" translate="no">
+        <button class="check-btn" onclick="checkWriteA4(${i})">✔ Verificar</button>
+        <div class="feedback" id="a4_fb_${i}"></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function checkWriteA4(i) {
+  const q = ACTIVIDAD4[i];
+  const input = document.getElementById(`a4_input_${i}`);
+  const fb = document.getElementById(`a4_fb_${i}`);
+  if (!input.value.trim()) { input.focus(); return; }
+  if (normalize(input.value) === normalize(q.correct)) {
+    input.classList.add('correct'); input.classList.remove('wrong');
+    fb.textContent = '✅ ¡Excelente! Oración correcta.';
+    fb.className = 'feedback ok';
+  } else {
+    input.classList.add('wrong'); input.classList.remove('correct');
+    fb.innerHTML = `❌ Correcto: <strong>${q.correct}</strong>`;
+    fb.className = 'feedback bad';
+  }
+}
+
+/* =====================================================================
+   RENDER ACTIVIDAD 5 — audio + opciones
+   ===================================================================== */
+function renderActividad5() {
+  const c = document.getElementById('actividad5');
+  c.innerHTML = ACTIVIDAD5.map((q, i) => {
+    const options = shuffleArr(q.options);
+    return `
+      <div class="question">
+        <span class="q-num">${i + 1}.</span>
+        <button class="audio-btn" onclick="speak('${q.audio.replace(/'/g, "\\'")}', this)">
+          🔊 Escuchar oración
+        </button>
+        <div class="options">
+          ${options.map(opt => `
+            <label>
+              <input type="radio" name="a5_${i}" value="${opt.replace(/"/g, '&quot;')}">
+              ${opt}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ============ INIT ============ */
+renderActividad1();
+renderActividad2();
+renderActividad3();
+renderActividad4();
+renderActividad5();
+
+/* =====================================================================
+   RESULTADOS
+   ===================================================================== */
+function showResults() {
+  let score1 = 0, score2 = 0, score3 = 0, score4 = 0, score5 = 0;
+
+  ACTIVIDAD1.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="a1_${i}"]:checked`);
+    if (sel && normalize(sel.value) === normalize(q.correct)) score1++;
+  });
+  ACTIVIDAD2.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="a2_${i}"]:checked`);
+    if (sel && normalize(sel.value) === normalize(q.correct)) score2++;
+  });
+  ACTIVIDAD3.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="a3_${i}"]:checked`);
+    if (sel && normalize(sel.value) === normalize(q.correct)) score3++;
+  });
+  ACTIVIDAD4.forEach((q, i) => {
+    const inp = document.getElementById(`a4_input_${i}`);
+    if (inp && normalize(inp.value) === normalize(q.correct)) score4++;
+  });
+  ACTIVIDAD5.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="a5_${i}"]:checked`);
+    if (sel && normalize(sel.value) === normalize(q.correct)) score5++;
+  });
+
+  const total = score1 + score2 + score3 + score4 + score5;
+  const max = 15 * 5;
+  const pct = Math.round((total / max) * 100);
+
+  let msg = '';
+  if (pct >= 90) msg = '🏆 Outstanding! Dominas el Present Perfect.';
+  else if (pct >= 75) msg = '🌟 Great job! Sigue practicando.';
+  else if (pct >= 60) msg = '👍 Good. Repasa negative & questions.';
+  else msg = '📚 Keep practicing. Repasa el Present Perfect.';
+
+  document.getElementById('scoreBox').innerHTML = `
+    <div class="score-item"><span>✍️ Actividad 1 (Yes/No Questions)</span><span>${score1} / 15</span></div>
+    <div class="score-item"><span>✍️ Actividad 2 (Negative/Interrogative)</span><span>${score2} / 15</span></div>
+    <div class="score-item"><span>🔤 Actividad 3 (Ever/Never/Yet/Already/Just)</span><span>${score3} / 15</span></div>
+    <div class="score-item"><span>🧩 Actividad 4 (Order the words)</span><span>${score4} / 15</span></div>
+    <div class="score-item"><span>🎧 Actividad 5 (Listening)</span><span>${score5} / 15</span></div>
+    <div class="score-item"><span>TOTAL</span><span>${total} / ${max} (${pct}%)</span></div>
+    <div class="feedback-final">${msg}</div>
+    <p style="margin-top:12px; color:#718096; font-size:0.9rem; text-align:center;">
+      ⚠️ Recuerda copiar todas tus respuestas en el cuaderno con tinta azul.
+    </p>
+  `;
+
+  document.getElementById('mainContent').style.display = 'none';
+  document.getElementById('resultsScreen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============ PREVENIR TRADUCCIÓN ============ */
+document.documentElement.setAttribute('translate', 'no');
+document.documentElement.classList.add('notranslate');
+document.body.setAttribute('translate', 'no');
+document.body.classList.add('notranslate');
+</script>
+
+</body>
+</html>
